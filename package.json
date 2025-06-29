@@ -1,0 +1,38 @@
+{
+  "name": "ai-nhap-vai-simulator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "AI Nhập Vai Simulator sử dụng Gemini API, React và TypeScript.",
+  "homepage": ".",
+  "type": "module",
+  "scripts": {
+    "dev": "esbuild index.tsx --bundle --outfile=bundle.js --format=esm --platform=browser --sourcemap --servedir=.",
+    "build": "node -e \"const fs=require('fs'); fs.rmSync('dist',{recursive:true,force:true}); fs.mkdirSync('dist/assets',{recursive:true});\" && esbuild index.tsx --bundle --outfile=dist/bundle.js --format=esm --platform=browser --minify && node -e \"const fs=require('fs'); ['index.html', 'sw.js', 'metadata.json'].forEach(f=>fs.copyFileSync(f, 'dist/'+f)); if(fs.existsSync('assets/default_avatar.png')) fs.copyFileSync('assets/default_avatar.png', 'dist/assets/default_avatar.png');\"",
+    "check-types": "tsc --noEmit"
+  },
+  "keywords": [
+    "ai",
+    "gemini",
+    "react",
+    "typescript",
+    "nhap-vai",
+    "roleplay"
+  ],
+  "author": "AI Roleplay User & Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "esbuild": "^0.21.4",
+    "typescript": "^5.4.5",
+    "@types/react": "^18.3.2",
+    "@types/react-dom": "^18.3.0"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@google/genai": "^1.6.0",
+    "@capacitor/core": "^7.4.0",
+    "@capacitor/app": "^7.0.1",
+    "@capacitor/filesystem": "^7.0.1",
+    "@capacitor/local-notifications": "^7.0.1"
+  }
+}
